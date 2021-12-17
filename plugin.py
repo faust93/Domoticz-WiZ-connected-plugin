@@ -263,7 +263,10 @@ class BasePlugin:
                         wizstate = 1
                     else:
                         wizstate = 0
-                    wizlevel=str(received["result"]["dimming"])
+                    if "dimming" in received["result"]:
+                        wizlevel = str(received["result"]["dimming"])
+                    else:
+                        wizlevel = "0"
 
                     if Devices[Device].Color != "":
                         c=json.loads(Devices[Device].Color)
